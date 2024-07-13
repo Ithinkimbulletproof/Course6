@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from django.utils import timezone
-from .models import Mailing, Attempt
+from main.models import Mailing, Attempt
 
 def send_mail(subject, body, to_email):
     msg = MIMEText(body)
