@@ -112,3 +112,6 @@ def mailing_delete(request, pk):
         mailing.delete()
         return redirect('mailing_list')
     return render(request, 'main/mailing_confirm_delete.html', {'mailing': mailing})
+
+def home(request):
+    return render(request, 'main/home.html')
