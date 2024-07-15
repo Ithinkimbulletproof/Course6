@@ -1,16 +1,17 @@
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Client List</title>
-   </head>
-   <body>
-       <h1>Client List</h1>
-       <ul>
-           {% for client in clients %}
-               <li>{{ client.name }}</li>
-           {% endfor %}
-       </ul>
-   </body>
-   </html>
+{% extends "main/base_generic.html" %}
+
+{% block title %}Список клиентов{% endblock %}
+
+{% block content %}
+<h1>Список клиентов</h1>
+<a href="{% url 'client_create' %}" class="btn btn-primary">Создать нового клиента</a>
+<ul>
+    {% for client in clients %}
+        <li>
+            <a href="{% url 'client_detail' client.pk %}">{{ client.name }}</a>
+            <a href="{% url 'client_update' client.pk %}" class="btn btn-secondary">Редактировать</a>
+            <a href="{% url 'client_delete' client.pk %}" class="btn btn-danger">Удалить</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

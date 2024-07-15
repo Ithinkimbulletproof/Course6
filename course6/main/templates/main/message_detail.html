@@ -1,0 +1,11 @@
+{% extends "main/base_generic.html" %}
+
+{% block title %}Детали сообщения{% endblock %}
+
+{% block content %}
+<h1>{{ message.subject }}</h1>
+<p>{{ message.body }}</p>
+<a href="{% url 'message_update' message.pk %}" class="btn btn-secondary">Редактировать</a>
+<a href="{% url 'message_delete' message.pk %}" class="btn btn-danger">Удалить</a>
+<a href="{% url 'message_list' %}" class="btn btn-primary">Назад к списку</a>
+{% endblock %}

@@ -1,11 +1,17 @@
-{% extends "base_generic.html" %}
+{% extends "main/base_generic.html" %}
+
+{% block title %}Список сообщений{% endblock %}
 
 {% block content %}
-  <h1>Messages</h1>
-  <ul>
+<h1>Список сообщений</h1>
+<a href="{% url 'message_create' %}" class="btn btn-primary">Создать новое сообщение</a>
+<ul>
     {% for message in messages %}
-      <li><a href="{% url 'message_detail' message.pk %}">{{ message.subject }}</a></li>
+        <li>
+            <a href="{% url 'message_detail' message.pk %}">{{ message.subject }}</a>
+            <a href="{% url 'message_update' message.pk %}" class="btn btn-secondary">Редактировать</a>
+            <a href="{% url 'message_delete' message.pk %}" class="btn btn-danger">Удалить</a>
+        </li>
     {% endfor %}
-  </ul>
-  <a href="{% url 'message_create' %}">Add new message</a>
+</ul>
 {% endblock %}

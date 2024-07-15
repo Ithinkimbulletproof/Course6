@@ -1,11 +1,17 @@
-{% extends "base_generic.html" %}
+{% extends "main/base_generic.html" %}
+
+{% block title %}Список рассылок{% endblock %}
 
 {% block content %}
-  <h1>Mailings</h1>
-  <ul>
+<h1>Список рассылок</h1>
+<a href="{% url 'mailing_create' %}" class="btn btn-primary">Создать новую рассылку</a>
+<ul>
     {% for mailing in mailings %}
-      <li><a href="{% url 'mailing_detail' mailing.pk %}">Mailing {{ mailing.id }} - {{ mailing.status }}</a></li>
+        <li>
+            <a href="{% url 'mailing_detail' mailing.pk %}">{{ mailing.subject }}</a>
+            <a href="{% url 'mailing_update' mailing.pk %}" class="btn btn-secondary">Редактировать</a>
+            <a href="{% url 'mailing_delete' mailing.pk %}" class="btn btn-danger">Удалить</a>
+        </li>
     {% endfor %}
-  </ul>
-  <a href="{% url 'mailing_create' %}">Add new mailing</a>
+</ul>
 {% endblock %}
