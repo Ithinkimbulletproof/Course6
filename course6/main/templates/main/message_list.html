@@ -3,15 +3,19 @@
 {% block title %}Список сообщений{% endblock %}
 
 {% block content %}
-<h1>Список сообщений</h1>
-<a href="{% url 'message_create' %}" class="btn btn-primary">Создать новое сообщение</a>
-<ul>
-    {% for message in messages %}
-        <li>
-            <a href="{% url 'message_detail' message.pk %}">{{ message.subject }}</a>
-            <a href="{% url 'message_update' message.pk %}" class="btn btn-secondary">Редактировать</a>
-            <a href="{% url 'message_delete' message.pk %}" class="btn btn-danger">Удалить</a>
-        </li>
-    {% endfor %}
-</ul>
+<div class="container mt-5">
+    <h1>Список сообщений</h1>
+    <a href="{% url 'message_create' %}" class="btn btn-primary mb-3">Создать новое сообщение</a>
+    <ul class="list-group">
+        {% for message in messages %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'message_detail' message.pk %}" class="me-auto">{{ message.subject }}</a>
+                <div>
+                    <a href="{% url 'message_update' message.pk %}" class="btn btn-secondary btn-sm me-1">Редактировать</a>
+                    <a href="{% url 'message_delete' message.pk %}" class="btn btn-danger btn-sm">Удалить</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

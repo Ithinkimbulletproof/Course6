@@ -3,10 +3,15 @@
 {% block title %}Удалить клиента{% endblock %}
 
 {% block content %}
-<h1>Вы уверены, что хотите удалить {{ client.name }}?</h1>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Да, удалить</button>
-</form>
-<a href="{% url 'client_list' %}" class="btn btn-secondary">Отмена</a>
+<div class="text-center mt-5">
+    <h1 class="mb-4">Вы уверены, что хотите удалить клиента <strong>{{ client.name }}</strong>?</h1>
+
+    <div class="d-flex justify-content-center">
+        <form method="post" class="me-2">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Да, удалить</button>
+        </form>
+        <a href="{% url 'client_list' %}" class="btn btn-secondary">Отмена</a>
+    </div>
+</div>
 {% endblock %}

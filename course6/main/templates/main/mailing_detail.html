@@ -3,9 +3,13 @@
 {% block title %}Детали рассылки{% endblock %}
 
 {% block content %}
-<h1>{{ mailing.subject }}</h1>
-<p>{{ mailing.body }}</p>
-<a href="{% url 'mailing_update' mailing.pk %}" class="btn btn-secondary">Редактировать</a>
-<a href="{% url 'mailing_delete' mailing.pk %}" class="btn btn-danger">Удалить</a>
-<a href="{% url 'mailing_list' %}" class="btn btn-primary">Назад к списку</a>
+<div class="container mt-5">
+    <h1>{{ mailing.subject }}</h1>
+    <p>{{ mailing.body }}</p>
+    <div class="mt-4">
+        <a href="{% url 'mailing_update' mailing.pk %}" class="btn btn-secondary me-2">Редактировать</a>
+        <a href="{% url 'mailing_delete' mailing.pk %}" class="btn btn-danger me-2">Удалить</a>
+        <a href="{% url 'mailing_list' %}" class="btn btn-primary">Назад к списку</a>
+    </div>
+</div>
 {% endblock %}
